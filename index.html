@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bank Soal Geografi Kelas 11 — Kurikulum Merdeka</title>
+<style>
+  :root{
+    --bg:#0f172a; --card:#1e293b; --accent:#38bdf8; --accent2:#818cf8;
+    --text:#e2e8f0; --muted:#94a3b8; --green:#34d399; --red:#f87171;
+    --yellow:#fbbf24; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    background:var(--bg); color:var(--text); line-height:1.7;
+    padding:24px 16px 80px;
+  }
+  .container{max-width:900px;margin:0 auto}
+  header{
+    text-align:center; margin-bottom:36px; padding:28px 20px;
+    background:linear-gradient(135deg,#1e3a5f,#0f172a);
+    border-radius:var(--radius); border:1px solid #334155;
+  }
+  header h1{font-size:1.6rem;color:var(--accent);margin-bottom:6px}
+  header p{color:var(--muted);font-size:.92rem}
+  .badge{
+    display:inline-block;background:#334155;color:var(--accent);
+    padding:4px 12px;border-radius:20px;font-size:.78rem;margin-top:10px;
+  }
+  h2{
+    font-size:1.15rem;margin:36px 0 18px;padding-left:12px;
+    border-left:4px solid var(--accent);color:var(--accent);
+  }
+  .card{
+    background:var(--card);border:1px solid #334155;border-radius:var(--radius);
+    padding:22px 20px;margin-bottom:16px;transition:border-color .2s;
+  }
+  .card:hover{border-color:var(--accent)}
+  .q-num{
+    display:inline-block;background:var(--accent);color:#0f172a;
+    font-weight:700;font-size:.78rem;padding:2px 10px;border-radius:6px;
+    margin-bottom:10px;
+  }
+  .q-text{margin-bottom:14px;font-size:.95rem}
+  .opt{
+    display:block;padding:10px 14px;margin:6px 0;border-radius:8px;
+    background:#0f172a;border:1px solid #334155;cursor:pointer;
+    transition:all .2s;font-size:.9rem;
+  }
+  .opt:hover{border-color:var(--accent2);background:#1a2332}
+  .opt.correct{border-color:var(--green);background:#052e1a;color:var(--green)}
+  .opt.wrong{border-color:var(--red);background:#2e0505;color:var(--red)}
+  .opt.locked{pointer-events:none;opacity:.85}
+  .feedback{margin-top:10px;font-size:.85rem;display:none;padding:10px 14px;border-radius:8px}
+  .feedback.show{display:block}
+  .feedback.ok{background:#052e1a;color:var(--green);border:1px solid #065f3a}
+  .feedback.no{background:#2e0505;color:var(--red);border:1px solid #7f1d1d}
+  .tf-btns{display:flex;gap:12px;margin-top:8px}
+  .tf-btn{
+    flex:1;padding:12px;border-radius:10px;border:2px solid #334155;
+    background:#0f172a;color:var(--text);cursor:pointer;font-weight:600;
+    font-size:.95rem;transition:all .2s;text-align:center;
+  }
+  .tf-btn:hover{border-color:var(--accent2)}
+  .tf-btn.selected-true{border-color:var(--green);background:#052e1a;color:var(--green)}
+  .tf-btn.selected-false{border-color:var(--red);background:#2e0505;color:var(--red)}
+  .tf-btn.locked{pointer-events:none}
+  .essay-area{
+    width:100%;min-height:110px;background:#0f172a;color:var(--text);
+    border:1px solid #334155;border-radius:10px;padding:14px;
+    font-family:inherit;font-size:.9rem;resize:vertical;margin-top:8px;
+    line-height:1.6;
+  }
+  .essay-area:focus{outline:none;border-color:var(--accent)}
+  .btn-reveal{
+    margin-top:10px;padding:9px 20px;border-radius:8px;border:none;
+    background:var(--accent2);color:#0f172a;font-weight:700;
+    cursor:pointer;font-size:.85rem;transition:opacity .2s;
+  }
+  .btn-reveal:hover{opacity:.85}
+  .answer-key{
+    margin-top:14px;padding:16px;background:#0f172a;border-radius:10px;
+    border:1px solid #334155;font-size:.87rem;display:none;line-height:1.7;
+  }
+  .answer-key.show{display:block}
+  .answer-key strong{color:var(--yellow)}
+  .hots-badge{
+    display:inline-block;background:#7c2d12;color:var(--yellow);
+    padding:2px 8px;border-radius:4px;font-size:.7rem;font-weight:700;
+    margin-left:6px;vertical-align:middle;
+  }
+  .score-bar{
+    position:fixed;bottom:0;left:0;right:0;background:#0f172a;
+    border-top:1px solid #334155;padding:12px 20px;text-align:center;
+    font-size:.88rem;z-index:100;
+  }
+  .score-bar span{color:var(--accent);font-weight:700}
+  footer{
+    text-align:center;color:var(--muted);font-size:.78rem;
+    margin-top:40px;padding-top:20px;border-top:1px solid #1e293b;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>🌏 Bank Soal Geografi Kelas 11</h1>
+  <p>Kurikulum Merdeka · Referensi: Buku Erlangga, UNDP, Badan Geologi ESDM, UNY, &amp; Sumber Akademik Lainnya</p>
+  <span class="badge">25 PG · 10 B/S · 5 Esai HOTS+++</span>
+</header>
+
+<!-- ==================== PILIHAN GANDA ==================== -->
+<h2>📝 A. Pilihan Ganda (25 Soal)</h2>
+
+<!-- PG 1 -->
+<div class="card" data-type="pg" data-answer="B">
+  <span class="q-num">1</span>
+  <div class="q-text">Letak astronomis Indonesia pada 6°LU–11°LS dan 95°BT–141°BT menyebabkan Indonesia memiliki dua dampak utama. Manakah pasangan dampak yang <em>paling tepat</em> menggambarkan hubungan sebab-akibat letak lintang dan letak bujur secara simultan?</div>
+  <div class="opt" data-opt="A">A. Curah hujan tinggi dan sering terjadi gempa bumi</div>
+  <div class="opt" data-opt="B">B. Iklim tropis dengan dua musim dan pembagian tiga zona waktu</div>
+  <div class="opt" data-opt="C">C. Tanah vulkanik subur dan menjadi jalur perdagangan internasional</div>
+  <div class="opt" data-opt="D">D. Keanekaragaman hayati tinggi dan rawan tsunami</div>
+  <div class="feedback" data-ok="Tepat! Letak lintang (6°LU–11°LS) menempatkan Indonesia di zona tropis dengan dua musim, sedangkan letak bujur (95°BT–141°BT, selisih 46°) menjadi dasar pembagian tiga zona waktu: WIB, WITA, WIT." data-no="Kurang tepat. Dampak letak astronomis berkaitan langsung dengan iklim tropis (lintang) dan pembagian zona waktu (bujur). Gempa dan tsunami lebih terkait letak geologis."></div>
+</div>
+
+<!-- PG 2 -->
+<div class="card" data-type="pg" data-answer="C">
+  <span class="q-num">2</span>
+  <div class="q-text">Indonesia terletak di antara dua benua dan dua samudra. Dampak <em>sosial-budaya</em> yang paling signifikan dari posisi <em>cross position</em> ini adalah…</div>
+  <div class="opt" data-opt="A">A. Indonesia menjadi anggota ASEAN dan PBB</div>
+  <div class="opt" data-opt="B">B. Munculnya dua musim, yaitu kemarau dan hujan</div>
+  <div class="opt" data-opt="C">C. Terbentuknya masyarakat multikultural dengan keragaman seni, bahasa, dan agama</div>
+  <div class="opt" data-opt="D">D. Indonesia memiliki banyak pelabuhan internasional</div>
+  <div class="feedback" data-ok="Benar! Posisi silang antara Benua Asia–Australia dan Samudra Hindia–Pasifik menjadikan Indonesia sebagai titik temu berbagai pengaruh budaya, sehingga masyarakatnya sangat beragam dalam seni, bahasa, dan agama." data-no="Perhatikan kata kunci 'sosial-budaya'. Musim dan pelabuhan bukan dampak sosial-budaya langsung dari posisi silang."></div>
+</div>
+
+<!-- PG 3 -->
+<div class="card" data-type="pg" data-answer="A">
+  <span class="q-num">3</span>
+  <div class="q-text">Indonesia terletak pada pertemuan tiga lempeng tektonik aktif. Dampak <em>ekonomi</em> paling nyata dari kondisi geologis tersebut adalah…</div>
+  <div class="opt" data-opt="A">A. Tersedianya melimpahnya sumber daya mineral dan energi seperti nikel, tembaga, minyak bumi, dan panas bumi</div>
+  <div class="opt" data-opt="B">B. Seringnya terjadi gempa bumi dan letusan gunung berapi</div>
+  <div class="opt" data-opt="C">C. Terbentuknya laut dalam di wilayah Indonesia tengah</div>
+  <div class="opt" data-opt="D">D. Adanya dua paparan benua, yaitu Sunda dan Sahul</div>
+  <div class="feedback" data-ok="Tepat! Letak geologis Indonesia pada zona subduksi tiga lempeng menciptakan jalur mineralisasi emas, perak, tembaga, nikel, serta cadangan minyak dan gas yang menjadi motor pertumbuhan ekonomi. Kondisi ini juga menghasilkan potensi panas bumi terbesar di dunia." data-no="Opsi B, C, dan D adalah dampak geologis, tetapi bukan dampak ekonomi langsung."></div>
+</div>
+
+<!-- PG 4 -->
+<div class="card" data-type="pg" data-answer="D">
+  <span class="q-num">4</span>
+  <div class="q-text">Pembangunan berkelanjutan menurut Brundtland Report (1987) bertumpu pada tiga pilar yang saling bergantung. Ketiga pilar tersebut adalah…</div>
+  <div class="opt" data-opt="A">A. Politik, hukum, dan keamanan</div>
+  <div class="opt" data-opt="B">B. Energi, pangan, dan air</div>
+  <div class="opt" data-opt="C">C. Teknologi, industri, dan perdagangan</div>
+  <div class="opt" data-opt="D">D. Ekonomi, sosial, dan lingkungan</div>
+  <div class="feedback" data-ok="Benar! Tiga pilar pembangunan berkelanjutan adalah pembangunan ekonomi, pembangunan sosial, dan perlindungan lingkungan yang saling memperkuat dan bergantung satu sama lain." data-no="Brundtland Report menekankan keseimbangan antara kebutuhan ekonomi, keadilan sosial, dan kelestarian lingkungan."></div>
+</div>
+
+<!-- PG 5 -->
+<div class="card" data-type="pg" data-answer="B">
+  <span class="q-num">5</span>
+  <div class="q-text">Berdasarkan UU No. 11 Tahun 1967, barang tambang golongan B (vital) memiliki ciri utama…</div>
+  <div class="opt" data-opt="A">A. Berperan strategis bagi pertahanan dan keamanan negara</div>
+  <div class="opt" data-opt="B">B. Menjamin hajat hidup orang banyak</div>
+  <div class="opt" data-opt="C">C. Dikelola sepenuhnya oleh masyarakat lokal</div>
+  <div class="opt" data-opt="D">D. Hanya digunakan untuk keperluan industri kecil</div>
+  <div class="feedback" data-ok="Tepat! Golongan B adalah bahan galian vital yang dapat menjamin hajat hidup orang banyak, contohnya emas, perak, dan tembaga. Golongan A bersifat strategis bagi perekonomian negara, sedangkan golongan C dikelola masyarakat untuk industri." data-no="Golongan A = strategis, golongan B = vital (hajat hidup orang banyak), golongan C = bukan strategis/vital."></div>
+</div>
+
+<!-- PG 6 -->
+<div class="card" data-type="pg" data-answer="C">
+  <span class="q-num">6</span>
+  <div class="q-text">Persebaran ikan laut di Indonesia sangat bervariasi antarwilayah. Faktor <em>oseanografi</em> yang paling menentukan distribusi ikan pelagis adalah…</div>
+  <div class="opt" data-opt="A">A. Kecepatan angin dan arah arus laut</div>
+  <div class="opt" data-opt="B">B. Jenis sedimen dasar laut dan kedalaman palung</div>
+  <div class="opt" data-opt="C">C. Suhu air, salinitas, dan kedalaman perairan</div>
+  <div class="opt" data-opt="D">D. Pasang surut air laut dan fase bulan</div>
+  <div class="feedback" data-ok="Benar! Suhu air, salinitas, dan kedalaman perairan berperan signifikan dalam menentukan distribusi ikan. Selain itu, tekanan aktivitas perikanan dan kerusakan habitat seperti terumbu karang turut mempengaruhi keberagaman spesies ikan." data-no="Faktor utama distribusi ikan adalah kondisi lingkungan perairan: suhu, salinitas, kedalaman, dan ketersediaan makanan."></div>
+</div>
+
+<!-- PG 7 -->
+<div class="card" data-type="pg" data-answer="A">
+  <span class="q-num">7</span>
+  <div class="q-text">Berdasarkan klasifikasi iklim Köppen, wilayah Indonesia bagian timur (seperti Nusa Tenggara) umumnya termasuk dalam tipe iklim…</div>
+  <div class="opt" data-opt="A">A. Aw (tropis savanna)</div>
+  <div class="opt" data-opt="B">B. Af (tropis basah)</div>
+  <div class="opt" data-opt="C">C. Am (tropis sedang)</div>
+  <div class="opt" data-opt="D">D. Csa (subtropis kering)</div>
+  <div class="feedback" data-ok="Tepat! Indonesia bagian timur memiliki tipe iklim Aw (tropis kering/savanna) dengan curah hujan tahunan lebih rendah, sehingga banyak dijumpai sabana. Wilayah barat bertipe Af (tropis basah) dan wilayah tengah bertipe Am (tropis sedang)." data-no="Indonesia memiliki tiga tipe iklim Köppen: Af (barat), Am (tengah), dan Aw (timur)."></div>
+</div>
+
+<!-- PG 8 -->
+<div class="card" data-type="pg" data-answer="B">
+  <span class="q-num">8</span>
+  <div class="q-text">Fungsi utama AMDAL dalam proses pembangunan adalah…</div>
+  <div class="opt" data-opt="A">A. Meningkatkan keuntungan investasi perusahaan</div>
+  <div class="opt" data-opt="B">B. Menjadi dasar perizinan dan mencegah kerusakan lingkungan</div>
+  <div class="opt" data-opt="C">C. Menggantikan kewajiban perusahaan membayar pajak</div>
+  <div class="opt" data-opt="D">D. Mempercepat proses pembangunan tanpa hambatan</div>
+  <div class="feedback" data-ok="Benar! AMDAL berfungsi sebagai dasar perizinan, masukan pengambilan keputusan, mencegah kerusakan lingkungan, melindungi investasi, dan mendukung pembangunan berkelanjutan. Pelaksanaannya diatur dalam UU No. 32/2009 tentang PPLH." data-no="AMDAL justru memastikan pembangunan tidak menimbulkan dampak besar yang merusak lingkungan."></div>
+</div>
+
+<!-- PG 9 -->
+<div class="card" data-type="pg" data-answer="C">
+  <span class="q-num">9</span>
+  <div class="q-text">Perbedaan waktu antara WIB (GMT+7) dan WIT (GMT+9) adalah…</div>
+  <div class="opt" data-opt="A">A. 1 jam</div>
+  <div class="opt" data-opt="B">B. 1,5 jam</div>
+  <div class="opt" data-opt="C">C. 2 jam</div>
+  <div class="opt" data-opt="D">D. 3 jam</div>
+  <div class="feedback" data-ok="Tepat! WIB menggunakan GMT+7 dan WIT menggunakan GMT+9, sehingga selisihnya 2 jam. WITA berada di antaranya dengan GMT+8. Pembagian ini didasarkan pada letak bujur Indonesia yang membentang dari 95°BT hingga 141°BT." data-no="Hitung selisih tolok ukur GMT: WIB +7, WITA +8, WIT +9."></div>
+</div>
+
+<!-- PG 10 -->
+<div class="card" data-type="pg" data-answer="A">
+  <span class="q-num">10</span>
+  <div class="q-text">Hutan yang berfungsi utama sebagai perlindungan sistem penyangga kehidupan, mengatur tata air, dan mencegah erosi disebut…</div>
+  <div class="opt" data-opt="A">A. Hutan lindung</div>
+  <div class="opt" data-opt="B">B. Hutan produksi</div>
+  <div class="opt" data-opt="C">C. Hutan konservasi</div>
+  <div class="opt" data-opt="D">D. Hutan wisata</div>
+  <div class="feedback" data-ok="Benar! Berdasarkan UU No. 41 Tahun 1999, hutan berdasarkan fungsi pokoknya dibagi menjadi hutan produksi (menghasilkan kayu/non-kayu), hutan lindung (perlindungan tata air dan tanah), dan hutan konservasi (pelestarian keanekaragaman hayati)." data-no="Hutan lindung berfungsi menjaga kelestarian tanah dan tata air wilayah."></div>
+</div>
+
+<!-- PG 11 -->
+<div class="card" data-type="pg" data-answer="B">
+  <span class="q-num">11</span>
+  <div class="q-text">Potensi panas bumi (geotermal) terbesar di Indonesia terkonsentrasi di pulau…</div>
+  <div class="opt" data-opt="A">A. Kalimantan dan Papua</div>
+  <div class="opt" data-opt="B">B. Sumatra dan Jawa</div>
+  <div class="opt" data-opt="C">C. Sulawesi dan Maluku</div>
+  <div class="opt" data-opt="D">D. Bali dan Nusa Tenggara</div>
+  <div class="feedback" data-ok="Tepat! Sumatra memiliki potensi sekitar 9.441 MW dan Jawa sekitar 7.587 MW. Potensi panas bumi Indonesia umumnya terkait dengan gunung api di zona subduksi. Provinsi Jawa Barat sendiri memiliki potensi sekitar 4,8 GW atau 20% dari total nasional." data-no="Panas bumi terkonsentrasi di jalur vulkanik Sumatra dan Jawa, bukan di Kalimantan atau Papua."></div>
+</div>
+
+<!-- PG 12 -->
+<div class="card" data-type="pg" data-answer="C">
+  <span class="q-num">12</span>
+  <div class="q-text">Manfaat utama program hilirisasi tambang bagi perekonomian Indonesia adalah…</div>
+  <div class="opt" data-opt="A">A. Meningkatkan volume ekspor bahan mentah</div>
+  <div class="opt" data-opt="B">B. Mengurangi jumlah tenaga kerja di sektor tambang</div>
+  <div class="opt" data-opt="C">C. Meningkatkan nilai tambah domestik dan memperpanjang rantai industri dalam negeri</div>
+  <div class="opt" data-opt="D">D. Menurunkan harga jual produk tambang di pasar internasional</div>
+  <div class="feedback" data-ok="Benar! Hilirisasi memperpanjang rantai industri di dalam negeri melalui pengolahan bauksit, nikel, hingga material baterai. Dampaknya mencakup peningkatan nilai tambah domestik, penguatan substitusi impor, penyerapan tenaga kerja, dan transformasi ekonomi daerah." data-no="Hilirisasi bukan tentang mengekspor lebih banyak bahan mentah, melainkan mengolahnya dulu di dalam negeri."></div>
+</div>
+
+<!-- PG 13 -->
+<div class="card" data-type="pg" data-answer="D">
+  <span class="q-num">13</span>
+  <div class="q-text">Ciri khas bioma sabana yang membedakannya dari stepa adalah…</div>
+  <div class="opt" data-opt="A">A. Terdapat di daerah beriklim sedang dengan curah hujan tinggi</div>
+  <div class="opt" data-opt="B">B. Didominasi oleh rumput pendek tanpa pepohonan</div>
+  <div class="opt" data-opt="C">C. Memiliki lapisan salju tebal sepanjang tahun</div>
+  <div class="opt" data-opt="D">D. Terdapat padang rumput yang diselingi pohon-pohon rendah dan semak belukar</div>
+  <div class="feedback" data-ok="Tepat! Sabana adalah padang rumput tropis-subtropis yang diselingi pohon rendah dan semak, terbentuk pada kondisi tanah kering saat musim kemarau. Stepa umumnya didominasi rumput pendek tanpa pohon dan tersebar di daerah beriklim sedang hingga tropis kering." data-no="Sabana memiliki pohon, stepa tidak. Sabana tersebar di daerah tropis, stepa di daerah beriklim sedang."></div>
+</div>
+
+<!-- PG 14 -->
+<div class="card" data-type="pg" data-answer="B">
+  <span class="q-num">14</span>
+  <div class="q-text">Mengapa wilayah Indonesia bagian barat memiliki hutan hujan tropis yang lebat, sedangkan wilayah timur didominasi sabana? Penjelasan geografis yang paling tepat adalah…</div>
+  <div class="opt" data-opt="A">A. Wilayah barat lebih dekat dengan garis khatulistiwa daripada wilayah timur</div>
+  <div class="opt" data-opt="B">B. Wilayah barat mendapat curah hujan lebih tinggi karena pengaruh angin muson dari Asia, sedangkan wilayah timur lebih kering karena pengaruh angin dari Australia</div>
+  <div class="opt" data-opt="C">C. Wilayah timur memiliki tanah vulkanik yang lebih subur daripada wilayah barat</div>
+  <div class="opt" data-opt="D">D. Wilayah barat memiliki ketinggian rata-rata lebih rendah daripada wilayah timur</div>
+  <div class="feedback" data-ok="Benar! Indonesia bagian barat bertipe iklim Af (tropis basah) dengan curah hujan rata-rata ±60 mm/bulan, sedangkan bagian timur bertipe Aw (tropis kering) dengan curah hujan tahunan lebih rendah. Perbedaan ini dipengaruhi pola angin muson yang membawa uap air dari Asia ke barat dan dari Australia yang lebih kering ke timur." data-no="Perbedaan utama terletak pada pola curah hujan yang dipengaruhi angin muson, bukan pada posisi lintang (keduanya tropis)."></div>
+</div>
+
+<!-- PG 15 -->
+<div class="card" data-type="pg" data-answer="C">
+  <span class="q-num">15</span>
+  <div class="q-text">Penerapan prinsip pembangunan berkelanjutan dalam pengelolaan tambang nikel di Indonesia yang paling mencerminkan keseimbangan tiga pilar adalah…</div>
+  <div class="opt" data-opt="A">A. Mengeksploitasi nikel sebanyak mungkin untuk meningkatkan devisa negara</div>
+  <div class="opt" data-opt="B">B. Menutup seluruh tambang nikel demi melindungi lingkungan</div>
+  <div class="opt" data-opt="C">C. Mengembangkan smelter dalam negeri untuk nilai tambah ekonomi, disertai reklamasi lahan dan pemberdayaan masyarakat sekitar</div>
+  <div class="opt" data-opt="D">D. Menjual bahan mentah nikel ke luar negeri tanpa pengolahan</div>
+  <div class="feedback" data-ok="Tepat! Opsi C mencerminkan tiga pilar secara bersamaan: ekonomi (hilirisasi dan nilai tambah), sosial (pemberdayaan masyarakat), dan lingkungan (reklamasi lahan). Ini adalah contoh pembangunan berkelanjutan dalam praktik." data-no="Pembangunan berkelanjutan menyeimbangkan ekonomi, sosial, dan lingkungan — bukan hanya mengejar satu aspek."></div>
+</div>
+
+<!-- PG 16 -->
+<div class="card" data-type="pg" data-answer="A">
+  <span class="q-num">16</span>
+  <div class="q-text">Fenomena <em>Wallacea</em> yang terletak di antara Paparan Sunda dan Paparan Sahul memiliki karakteristik geologis berupa…</div>
+  <div class="opt" data-opt="A">A. Laut dalam dan wilayah kepulauan yang bukan bagian dari paparan benua</div>
+  <div class="opt" data-opt="B">B. Dataran rendah yang luas dan subur</div>
+  <div class="opt" data-opt="C">C. Pegunungan lipatan tertinggi di daerah tropis</div>
+  <div class="opt" data-opt="D">D. Paparan benua yang terluas di dunia</div>
+  <div class="feedback" data-ok="Benar! Wallacea terletak di antara Paparan Sunda (bagian Benua Asia) dan Paparan Sahul (bagian Benua Australia). Di wilayah ini terdapat laut antar-pulau terdalam di dunia, yaitu Laut Banda (±5.000 m), dan kedalaman Laut Weber mencapai ±7.500 m." data-no="Wallacea adalah zona peralihan dengan laut dalam, bukan paparan benua."></div>
+</div>
+
+<!-- PG 17 -->
+<div class="card" data-type="pg" data-answer="B">
+  <span class="q-num">17</span>
+  <div class="q-text">Indonesia memiliki sekitar 127 gunung api aktif. Jumlah ini menjadikan Indonesia sebagai…</div>
+  <div class="opt" data-opt="A">A. Negara dengan gunung api aktif terbanyak di dunia</div>
+  <div class="opt" data-opt="B">B. Negara dengan gunung api aktif terbanyak kedua di dunia setelah negara tertentu</div>
+  <div class="opt" data-opt="C">C. Satu-satunya negara yang memiliki gunung api aktif di Asia Tenggara</div>
+  <div class="opt" data-opt="D">D. Negara tanpa risiko gempa bumi meskipun banyak gunung api</div>
+  <div class="feedback" data-ok="Tepat! Indonesia memiliki sekitar 127 gunung api aktif dan menempati urutan kedua dunia. Letusan besar berskala global pernah terjadi di Indonesia, antara lain Toba (74.000 tahun lalu), Tambora (1815), dan Krakatau (1883), yang mengubah lingkungan geosfer, hidrosfer, atmosfer, dan biosfer secara global." data-no="Indonesia urutan kedua dunia dalam jumlah gunung api aktif."></div>
+</div>
+
+<!-- PG 18 -->
+<div class="card" data-type="pg" data-answer="D">
+  <span class="q-num">18</span>
+  <div class="q-text">Dokumen AMDAL terdiri dari beberapa komponen. Yang <em>bukan</em> termasuk dalam dokumen AMDAL adalah…</div>
+  <div class="opt" data-opt="A">A. Kerangka acuan (KA)</div>
+  <div class="opt" data-opt="B">B. Analisis dampak lingkungan (ANDAL)</div>
+  <div class="opt" data-opt="C">C. Rencana pengelolaan lingkungan hidup (RKL) dan Rencana pemantauan lingkungan hidup (RPL)</div>
+  <div class="opt" data-opt="D">D. Laporan keuangan perusahaan pemrakarsa</div>
+  <div class="feedback" data-ok="Benar! Dokumen AMDAL terdiri dari KA, ANDAL, RKL, dan RPL. Laporan keuangan perusahaan bukan bagian dari dokumen AMDAL. AMDAL adalah kajian mengenai dampak besar dan penting suatu usaha terhadap lingkungan." data-no="AMDAL mencakup aspek fisik, kimia, biologi, sosial ekonomi, dan sosial budaya — bukan keuangan perusahaan."></div>
+</div>
+
+<!-- PG 19 -->
+<div class="card" data-type="pg" data-answer="A">
+  <span class="q-num">19</span>
+  <div class="q-text">Zona WITA (Waktu Indonesia Tengah) menggunakan tolok ukur GMT+8 dengan meridian pangkal 120°BT. Wilayah yang termasuk dalam zona ini adalah…</div>
+  <div class="opt" data-opt="A">A. Bali, Nusa Tenggara, Sulawesi, Kalimantan Selatan, Kalimantan Timur, Kalimantan Utara</div>
+  <div class="opt" data-opt="B">B. Sumatra, Jawa, Kalimantan Barat, Kalimantan Tengah</div>
+  <div class="opt" data-opt="C">C. Papua, Maluku, Maluku Utara</div>
+  <div class="opt" data-opt="D">D. Seluruh wilayah Kalimantan dan Sulawesi</div>
+  <div class="feedback" data-ok="Tepat! WITA mencakup Bali, Nusa Tenggara, Sulawesi, Kalimantan Selatan, Kalimantan Timur, dan Kalimantan Utara. WIB meliputi Sumatra, Jawa, Madura, Kalimantan Barat, dan Kalimantan Tengah. WIT mencakup Papua dan Maluku." data-no="Perhatikan pembagian wilayah: WIB (barat), WITA (tengah), WIT (timur)."></div>
+</div>
+
+<!-- PG 20 — HOTS -->
+<div class="card" data-type="pg" data-answer="C">
+  <span class="q-num">20 <span class="hots-badge">HOTS</span></span>
+  <div class="q-text">Seorang pengusaha akan membangun smelter nikel di Sulawesi Tengah. Ia telah menyusun dokumen AMDAL yang lengkap. Namun, masyarakat sekitar menolak karena khawatir limbah tailing mencemari sungai. Langkah <em>paling tepat</em> yang mencerminkan prinsip AMDAL dan pembangunan berkelanjutan adalah…</div>
+  <div class="opt" data-opt="A">A. Tetap melanjutkan pembangunan karena AMDAL sudah lengkap dan sah</div>
+  <div class="opt" data-opt="B">B. Membatalkan proyek sepenuhnya demi menghindari konflik</div>
+  <div class="opt" data-opt="C">C. Melakukan konsultasi publik, mengkaji ulang aspek sosial dalam AMDAL, dan merancang teknologi pengolahan tailing yang lebih aman sebelum pembangunan dimulai</div>
+  <div class="opt" data-opt="D">D. Memindahkan lokasi smelter ke daerah yang penduduknya tidak menolak</div>
+  <div class="feedback" data-ok="Benar! AMDAL bukan sekadar dokumen formal, melainkan proses partisipatif. Konsultasi publik dan kajian ulang aspek sosial adalah bagian dari prinsip AMDAL. Teknologi pengolahan tailing yang lebih aman mencerminkan pilar lingkungan dalam pembangunan berkelanjutan." data-no="AMDAL yang baik melibatkan masyarakat dan mengkaji dampak sosial secara serius, bukan mengabaikan keberatan warga."></div>
+</div>
+
+<!-- PG 21 -->
+<div class="card" data-type="pg" data-answer="B">
+  <span class="q-num">21</span>
+  <div class="q-text">Contoh bahan tambang golongan C (bukan strategis dan bukan vital) adalah…</div>
+  <div class="opt" data-opt="A">A. Minyak bumi, batu bara, gas alam</div>
+  <div class="opt" data-opt="B">B. Pasir, marmer, batu gamping, kaolin, gipsum</div>
+  <div class="opt" data-opt="C">C. Emas, perak, platina, tembaga</div>
+  <div class="opt" data-opt="D">D. Nikel, timah, bauksit, uranium</div>
+  <div class="feedback" data-ok="Tepat! Golongan C adalah bahan galian yang tidak termasuk strategis maupun vital, umumnya dikelola masyarakat untuk keperluan industri. Contohnya pasir, marmer, batu gamping, kaolin, gipsum, dan fosfat." data-no="Golongan A: strategis (minyak bumi, batu bara, nikel). Golongan B: vital (emas, perak, tembaga)."></div>
+</div>
+
+<!-- PG 22 -->
+<div class="card" data-type="pg" data-answer="D">
+  <span class="q-num">22</span>
+  <div class="q-text">Wilayah Pengelolaan Perikanan Negara Republik Indonesia (WPP NRI) 715 meliputi perairan…</div>
+  <div class="opt" data-opt="A">A. Selat Malaka dan Laut Andaman</div>
+  <div class="opt" data-opt="B">B. Laut Jawa dan Selat Karimata</div>
+  <div class="opt" data-opt="C">C. Samudra Hindia di barat Sumatra</div>
+  <div class="opt" data-opt="D">D. Laut Sulawesi, Laut Maluku, dan Samudra Pasifik</div>
+  <div class="feedback" data-ok="Benar! WPP 715 mencakup perairan Laut Sulawesi, Laut Maluku, dan Samudra Pasifik. Ikan pelagis besar seperti tuna dan cakalang banyak ditemukan di wilayah ini karena kondisi oseanografi yang mendukung, termasuk suhu dan oksigen terlarut yang sesuai." data-no="WPP 715 berada di perairan timur laut Indonesia, bukan di barat."></div>
+</div>
+
+<!-- PG 23 -->
+<div class="card" data-type="pg" data-answer="A">
+  <span class="q-num">23</span>
+  <div class="q-text">Dampak negatif letak geologis Indonesia yang berada di Ring of Fire adalah…</div>
+  <div class="opt" data-opt="A">A. Sering terjadi gempa bumi, letusan gunung api, dan tsunami</div>
+  <div class="opt" data-opt="B">B. Tanah menjadi tidak subur karena sering tertutup lava</div>
+  <div class="opt" data-opt="C">C. Tidak tersedianya sumber daya mineral di wilayah Indonesia</div>
+  <div class="opt" data-opt="D">D. Indonesia tidak memiliki potensi energi panas bumi</div>
+  <div class="feedback" data-ok="Tepat! Posisi di Ring of Fire membuat Indonesia sering mengalami gempa bumi dan memiliki banyak gunung api aktif. Gempa dahsyat berkekuatan 9,0 SR terjadi di Aceh pada Desember 2004 dan menyebabkan tsunami hebat. Namun, sisi positifnya adalah kesuburan tanah dan kekayaan mineral." data-no="Ring of Fire membawa risiko bencana geologis, bukan membuat tanah tidak subur atau minim mineral."></div>
+</div>
+
+<!-- PG 24 -->
+<div class="card" data-type="pg" data-answer="C">
+  <span class="q-num">24</span>
+  <div class="q-text">Contoh penerapan prinsip <em>intergenerasi</em> dalam pembangunan berkelanjutan adalah…</div>
+  <div class="opt" data-opt="A">A. Menggunakan seluruh sumber daya alam sekarang untuk kesejahteraan maksimal</div>
+  <div class="opt" data-opt="B">B. Melarang semua bentuk eksploitasi sumber daya alam</div>
+  <div class="opt" data-opt="C">C. Menetapkan kuota penangkapan ikan dan melakukan reboisasi hutan agar sumber daya tetap tersedia bagi generasi mendatang</div>
+  <div class="opt" data-opt="D">D. Meningkatkan ekspor bahan mentah untuk mempercepat pertumbuhan ekonomi</div>
+  <div class="feedback" data-ok="Benar! Prinsip intergenerasi berarti memenuhi kebutuhan sekarang tanpa mengorbankan kemampuan generasi mendatang untuk memenuhi kebutuhannya. Kuota penangkapan ikan dan reboisasi adalah contoh konkret prinsip ini." data-no="Prinsip intergenerasi menekankan keadilan antargenerasi, bukan eksploitasi maksimal atau pelarangan total."></div>
+</div>
+
+<!-- PG 25 — HOTS -->
+<div class="card" data-type="pg" data-answer="B">
+  <span class="q-num">25 <span class="hots-badge">HOTS</span></span>
+  <div class="q-text">Perhatikan data berikut: (1) Indonesia memiliki 127 gunung api aktif, (2) potensi panas bumi Indonesia diperkirakan 23.357 MW — terbesar di dunia, (3) pemerintah menargetkan bauran energi terbarukan 23% pada 2025. <br><br>Berdasarkan data tersebut, analisis yang <em>paling tepat</em> mengenai hubungan antara letak geologis dan kebijakan energi Indonesia adalah…</div>
+  <div class="opt" data-opt="A">A. Letak geologis Indonesia tidak relevan dengan kebijakan energi terbarukan karena panas bumi sulit dikembangkan</div>
+  <div class="opt" data-opt="B">B. Letak geologis Indonesia di zona subduksi menciptakan potensi panas bumi yang besar, sehingga pengembangan energi geotermal merupakan strategi logis untuk mencapai target bauran energi terbarukan</div>
+  <div class="opt" data-opt="C">C. Indonesia sebaiknya fokus pada energi fosil karena lebih murah daripada mengembangkan panas bumi</div>
+  <div class="opt" data-opt="D">D. Potensi panas bumi terbesar terdapat di Kalimantan, sehingga pembangunan PLTP seharusnya dipusatkan di sana</div>
+  <div class="feedback" data-ok="Tepat! Letak geologis Indonesia pada zona subduksi tiga lempeng menciptakan jalur vulkanik yang kaya potensi panas bumi. Dengan potensi terbesar di dunia (23.357 MW), pengembangan geotermal adalah strategi berbasis kondisi geografis untuk mendukung transisi energi. Potensi terbesar justru di Sumatra (9,5 GW) dan Jawa, bukan Kalimantan." data-no="Data menunjukkan korelasi antara kondisi geologis (gunung api, zona subduksi) dan potensi geotermal yang dapat dimanfaatkan untuk energi bersih."></div>
+    </div>
+
+  <!-- ==================== BENAR/SALAH ==================== -->
+<h2>✅ B. Benar / Salah (10 Soal)</h2>
+
+<!-- BS 1 -->
+<div class="card" data-type="tf" data-answer="true">
+  <span class="q-num">1</span>
+  <div class="q-text">Letak astronomis Indonesia menyebabkan Indonesia memiliki iklim tropis dan pembagian tiga zona waktu.</div>
+  <div class="tf-btns">
+    <div class="tf-btn" data-val="true">✔ Benar</div>
+    <div class="tf-btn" data-val="false">✘ Salah</div>
+  </div>
+  <div class="feedback" data-ok="Benar! Letak lintang 6°LU–11°LS menjadikan Indonesia tropis, dan letak bujur 95°BT–141°BT menjadi dasar pembagian WIB, WITA, dan WIT." data-no=""></div>
+</div>
+
+<!-- BS 2 -->
+<div class="card" data-type="tf" data-answer="false">
+  <span class="q-num">2</span>
+  <div class="q-text">Hilirisasi tambang bertujuan untuk meningkatkan ekspor bahan mentah ke luar negeri.</div>
+  <div class="tf-btns">
+    <div class="tf-btn" data-val="true">✔ Benar</div>
+    <div class="tf-btn" data-val="false">✘ Salah</div>
+  </div>
+  <div class="feedback" data-ok="Salah. Hilirisasi justru bertujuan mengolah bahan mentah di dalam negeri terlebih dahulu untuk meningkatkan nilai tambah domestik, bukan mengekspornya dalam bentuk mentah." data-no=""></div>
+</div>
+
+<!-- BS 3 -->
+<div class="card" data-type="tf" data-answer="true">
+  <span class="q-num">3</span>
+  <div class="q-text">Hutan lindung berfungsi utama sebagai perlindungan sistem penyangga kehidupan, termasuk mengatur tata air dan mencegah erosi.</div>
+  <div class="tf-btns">
+    <div class="tf-btn" data-val="true">✔ Benar</div>
+    <div class="tf-btn" data-val="false">✘ Salah</div>
+  </div>
+  <div class="feedback" data-ok="Benar! Berdasarkan UU No. 41 Tahun 1999, hutan lindung berfungsi pokok sebagai perlindungan sistem penyangga kehidupan, mengatur tata air, mencegah banjir dan erosi, serta memelihara kesuburan tanah." data-no=""></div>
+</div>
+
+<!-- BS 4 -->
+<div class="card" data-type="tf" data-answer="false">
+  <span class="q-num">4</span>
+  <div class="q-text">Wilayah Indonesia bagian timur memiliki curah hujan lebih tinggi daripada wilayah bagian barat karena dipengaruhi angin muson dari Asia.</div>
+  <div class="tf-btns">
+    <div class="tf-btn" data-val="true">✔ Benar</div>
+    <div class="tf-btn" data-val="false">✘ Salah</div>
+  </div>
+  <div class="feedback" data-ok="Salah. Justru Indonesia bagian barat yang mendapat curah hujan lebih tinggi karena pengaruh angin muson dari Asia yang membawa uap air. Wilayah timur lebih kering karena pengaruh angin dari Australia." data-no=""></div>
+</div>
+
+<!-- BS 5 -->
+<div class="card" data-type="tf" data-answer="true">
+  <span class="q-num">5</span>
+  <div class="q-text">AMDAL wajib dimiliki oleh setiap rencana usaha dan/atau kegiatan yang kemungkinan dapat menimbulkan dampak besar dan penting terhadap lingkungan hidup.</div>
+  <div class="tf-btns">
+    <div class="tf-btn" data-val="true">✔ Benar</div>
+    <div class="tf-btn" data-val="false">✘ Salah</div>
+  </div>
+  <div class="feedback" data-ok="Benar! Berdasarkan UU No. 32/2009 tentang PPLH, setiap rencana usaha dan/atau kegiatan yang berpotensi menimbulkan dampak besar dan penting terhadap lingkungan wajib memiliki AMDAL." data-no=""></div>
+</div>
+
+<!-- BS 6 -->
+<div class="card" data-type="tf" data-answer="false">
+  <span class="q-num">6</span>
+  <div class="q-text">Potensi panas bumi terbesar di Indonesia terletak di Pulau Kalimantan karena banyaknya gunung api aktif di sana.</div>
+  <div class="tf-btns">
+    <div class="tf-btn" data-val="true">✔ Benar</div>
+    <div class="tf-btn" data-val="false">✘ Salah</div>
+  </div>
+  <div class="feedback" data-ok="Salah. Potensi panas bumi terbesar justru di Sumatra (9.441 MW) dan Jawa (7.587 MW), bukan Kalimantan. Panas bumi terkait dengan jalur vulkanik zona subduksi." data-no=""></div>
+</div>
+
+<!-- BS 7 -->
+<div class="card" data-type="tf" data-answer="true">
+  <span class="q-num">7</span>
+  <div class="q-text">Perbedaan distribusi ikan pelagis dan ikan karang di perairan Indonesia dipengaruhi oleh faktor suhu air, salinitas, kedalaman, dan ketersediaan makanan.</div>
+  <div class="tf-btns">
+    <div class="tf-btn" data-val="true">✔ Benar</div>
+    <div class="tf-btn" data-val="false">✘ Salah</div>
+  </div>
+  <div class="feedback" data-ok="Benar! Faktor lingkungan seperti suhu air, salinitas, dan kedalaman perairan berperan signifikan dalam menentukan distribusi ikan. Ikan pelagis kecil cenderung menurun kepadatannya seiring bertambahnya kedalaman, sedangkan ikan pelagis besar justru meningkat pada kondisi suhu dan oksigen terlarut tertentu." data-no=""></div>
+</div>
+
+<!-- BS 8 -->
+<div class="card" data-type="tf" data-answer="false">
+  <span class="q-num">8</span>
+  <div class="q-text">Golongan bahan tambang A (strategis) mencakup emas, perak, dan platina.</div>
+  <div class="tf-btns">
+    <div class="tf-btn" data-val="true">✔ Benar</div>
+    <div class="tf-btn" data-val="false">✘ Salah</div>
+  </div>
+  <div class="feedback" data-ok="Salah. Emas, perak, dan platina termasuk golongan B (vital). Golongan A (strategis) mencakup minyak bumi, batu bara, gas alam, nikel, tembaga, dan timah." data-no=""></div>
+</div>
+
+<!-- BS 9 -->
+<div class="card" data-type="tf" data-answer="true">
+  <span class="q-num">9</span>
+  <div class="q-text">Tiga pilar pembangunan berkelanjutan adalah ekonomi, sosial, dan lingkungan yang saling bergantung dan memperkuat.</div>
+  <div class="tf-btns">
+    <div class="tf-btn" data-val="true">✔ Benar</div>
+    <div class="tf-btn" data-val="false">✘ Salah</div>
+  </div>
+  <div class="feedback" data-ok="Benar! Menurut Brundtland Report dan dokumen PBB, pembangunan berkelanjutan terdiri dari tiga pilar: pembangunan ekonomi, pembangunan sosial, dan perlindungan lingkungan, yang saling terkait dan memperkuat." data-no=""></div>
+</div>
+
+<!-- BS 10 -->
+<div class="card" data-type="tf" data-answer="false">
+  <span class="q-num">10</span>
+  <div class="q-text">Sabana dan stepa adalah bioma yang sama, hanya berbeda nama berdasarkan wilayah persebarannya.</div>
+  <div class="tf-btns">
+    <div class="tf-btn" data-val="true">✔ Benar</div>
+    <div class="tf-btn" data-val="false">✘ Salah</div>
+  </div>
+  <div class="feedback" data-ok="Salah. Sabana dan stepa adalah bioma yang berbeda. Sabana adalah padang rumput tropis-subtropis yang diselingi pohon dan semak, sedangkan stepa umumnya didominasi rumput pendek tanpa pohon dan tersebar di daerah beriklim sedang hingga tropis kering." data-no=""></div>
+</div>
+
+<!-- ==================== ESAI HOTS ==================== -->
+<h2>🧠 C. Esai HOTS+++ (5 Soal)</h2>
+
+<!-- Esai 1 -->
+<div class="card" data-type="essay">
+  <span class="q-num">1 <span class="hots-badge">HOTS+++</span></span>
+  <div class="q-text">Indonesia memiliki letak geologis yang unik karena berada di pertemuan tiga lempeng tektonik. Di satu sisi, kondisi ini memberikan kekayaan sumber daya mineral yang melimpah. Namun, di sisi lain, Indonesia juga menjadi salah satu negara paling rawan bencana geologis di dunia. <br><br><strong>Analisislah</strong> bagaimana Indonesia dapat mengoptimalkan potensi geologisnya untuk pembangunan ekonomi sekaligus memitigasi risiko bencananya. Berikan minimal tiga strategi konkret yang mencerminkan prinsip pembangunan berkelanjutan!</div>
+  <textarea class="essay-area" placeholder="Tulis jawabanmu di sini..."></textarea>
+  <button class="btn-reveal" onclick="toggleKey(this)">🔍 Lihat Kunci Jawaban</button>
+  <div class="answer-key">
+    <strong>Kunci Jawaban:</strong><br><br>
+    <strong>1. Optimalisasi potensi geologis:</strong> Indonesia memiliki jalur mineralisasi emas, perak, tembaga, nikel, dan potensi panas bumi terbesar di dunia (23.357 MW). Strategi: mengembangkan hilirisasi mineral untuk meningkatkan nilai tambah domestik, sekaligus mengembangkan energi geotermal sebagai sumber energi terbarukan.<br><br>
+    <strong>2. Mitigasi risiko bencana:</strong> Indonesia memiliki 127 gunung api aktif dan sering mengalami gempa bumi. Strategi: memperkuat sistem peringatan dini, membangun infrastruktur tahan gempa, dan melakukan tata ruang berbasis risiko bencana.<br><br>
+    <strong>3. Prinsip pembangunan berkelanjutan:</strong> Setiap aktivitas eksploitasi sumber daya wajib melalui AMDAL yang ketat, melibatkan partisipasi masyarakat, dan menerapkan teknologi ramah lingkungan. Reklamasi lahan pascatambang harus menjadi kewajiban, bukan pilihan.<br><br>
+    <em>Sumber: Badan Geologi ESDM, UNDP Archipelagic Development Report</em>
+  </div>
+</div>
+
+<!-- Esai 2 -->
+<div class="card" data-type="essay">
+  <span class="q-num">2 <span class="hots-badge">HOTS+++</span></span>
+  <div class="q-text">Perhatikan fenomena berikut: Indonesia bagian barat memiliki hutan hujan tropis yang sangat lebat, sementara Indonesia bagian timur didominasi oleh sabana. Perbedaan ini tidak hanya dipengaruhi oleh curah hujan, tetapi juga oleh sejarah geologis kepulauan Nusantara. <br><br><strong>Bandingkan</strong> karakteristik ekosistem hutan di kedua wilayah tersebut. <strong>Jelaskan</strong> mengapa perbedaan ini terjadi, dan <strong>analisislah</strong> implikasinya terhadap kebijakan konservasi keanekaragaman hayati di Indonesia!</div>
+  <textarea class="essay-area" placeholder="Tulis jawabanmu di sini..."></textarea>
+  <button class="btn-reveal" onclick="toggleKey(this)">🔍 Lihat Kunci Jawaban</button>
+  <div class="answer-key">
+    <strong>Kunci Jawaban:</strong><br><br>
+    <strong>Perbandingan ekosistem:</strong> Indonesia barat (Sumatra, Kalimantan, Jawa) bertipe iklim Af dengan hutan hujan tropis: pohon besar dan tinggi, berdaun lebat, banyak tumbuhan merambat dan epifit (pakis, anggrek). Indonesia timur (Nusa Tenggara, Maluku, sebagian Papua) bertipe iklim Aw dengan sabana: padang rumput, semak belukar, dan pohon-pohon rendah (eukaliptus, sagu).<br><br>
+    <strong>Penyebab perbedaan:</strong> Selain perbedaan curah hujan yang dipengaruhi angin muson, faktor sejarah geologis juga berperan. Paparan Sunda (barat) pernah menyatu dengan Benua Asia, sehingga flora dan faunanya bersifat Asiatis. Paparan Sahul (timur) pernah menyatu dengan Australia, sehingga flora dan faunanya bersifat Australis. Wallacea sebagai zona peralihan memiliki keunikan tersendiri.<br><br>
+    <strong>Implikasi kebijakan konservasi:</strong> Indonesia memiliki keanekaragaman hayati tertinggi kedua di dunia. Kebijakan konservasi harus mempertimbangkan kekhasan masing-masing wilayah. Hutan hujan tropis di barat memerlukan perlindungan dari deforestasi dan alih fungsi lahan, sedangkan sabana di timur memerlukan perlindungan dari kebakaran lahan dan penggembalaan berlebihan. Pendekatan konservasi harus berbasis ekosistem, bukan seragam untuk seluruh Indonesia.<br><br>
+    <em>Sumber: UNY Geography Education Repository, Wallacea Biodiversity Studies</em>
+  </div>
+</div>
+
+<!-- Esai 3 -->
+<div class="card" data-type="essay">
+  <span class="q-num">3 <span class="hots-badge">HOTS+++</span></span>
+  <div class="q-text">Sebuah perusahaan tambang nikel ingin membuka operasi di sebuah kabupaten di Sulawesi Tengah. Wilayah tersebut merupakan habitat endemik anoa dan babi rusa, serta menjadi daerah tangkapan air bagi tiga kecamatan di sekitarnya. Perusahaan telah menyusun dokumen AMDAL yang menyatakan dampak lingkungan "dapat dikelola". Namun, masyarakat adat setempat menolak karena wilayah tersebut merupakan hutan adat mereka. <br><br><strong>Evaluasilah</strong> situasi ini berdasarkan prinsip-prinsip AMDAL dan pembangunan berkelanjutan. <strong>Rumuskanlah</strong> solusi yang adil bagi semua pihak tanpa mengabaikan aspek lingkungan!</div>
+  <textarea class="essay-area" placeholder="Tulis jawabanmu di sini..."></textarea>
+  <button class="btn-reveal" onclick="toggleKey(this)">🔍 Lihat Kunci Jawaban</button>
+  <div class="answer-key">
+    <strong>Kunci Jawaban:</strong><br><br>
+    <strong>Evaluasi berdasarkan AMDAL:</strong> AMDAL bukan sekadar dokumen teknis, melainkan proses partisipatif yang wajib melibatkan masyarakat terdampak. Jika masyarakat adat menolak, berarti aspek sosial dalam AMDAL belum terpenuhi. AMDAL yang sah harus mengkaji dampak terhadap sosial-budaya, termasuk hak masyarakat adat atas hutan.<br><br>
+    <strong>Prinsip pembangunan berkelanjutan:</strong> Tiga pilar (ekonomi, sosial, lingkungan) harus seimbang. Keuntungan ekonomi dari tambang tidak boleh mengorbankan fungsi ekologis hutan sebagai daerah tangkapan air dan habitat endemik, serta hak sosial-budaya masyarakat adat.<br><br>
+    <strong>Solusi yang adil:</strong> (1) Menghentikan sementara rencana operasi dan melakukan konsultasi publik yang genuine dengan masyarakat adat. (2) Mengkaji ulang AMDAL dengan melibatkan ahli ekologi, antropolog, dan perwakilan masyarakat adat. (3) Jika operasi tetap dilanjutkan, wajib menerapkan teknologi zero-tailing, menyediakan kompensasi yang layak, memberdayakan ekonomi masyarakat adat, dan menetapkan kawasan lindung di area tangkapan air. (4) Jika risiko ekologis terlalu tinggi, proyek harus dibatalkan demi kepentingan publik yang lebih besar.<br><br>
+    <em>Sumber: UU No. 32/2009 tentang PPLH, UNDP Inclusive Development Framework</em>
+  </div>
+</div>
+
+<!-- Esai 4 -->
+<div class="card" data-type="essay">
+  <span class="q-num">4 <span class="hots-badge">HOTS+++</span></span>
+  <div class="q-text">Perhatikan data berikut: Indonesia memiliki potensi panas bumi 23.357 MW (terbesar di dunia), tetapi pemanfaatannya baru sekitar 2.300 MW atau kurang dari 10% dari total potensi. Di sisi lain, Indonesia masih bergantung pada energi fosil (batu bara) untuk memenuhi kebutuhan listrik nasional. <br><br><strong>Analisislah</strong> faktor-faktor yang menyebabkan rendahnya pemanfaatan energi geotermal di Indonesia. <strong>Rumuskanlah</strong> strategi untuk mengatasi hambatan tersebut, dan <strong>jelaskan</strong> bagaimana pengembangan geotermal dapat mendukung pencapaian SDGs (Sustainable Development Goals)!</div>
+  <textarea class="essay-area" placeholder="Tulis jawabanmu di sini..."></textarea>
+  <button class="btn-reveal" onclick="toggleKey(this)">🔍 Lihat Kunci Jawaban</button>
+  <div class="answer-key">
+    <strong>Kunci Jawaban:</strong><br><br>
+    <strong>Faktor penyebab rendahnya pemanfaatan:</strong> (1) Biaya eksplorasi dan pengeboran awal yang sangat tinggi (high risk investment). (2) Lokasi potensi geotermal sering berada di kawasan hutan lindung atau konservasi, sehingga terkendala regulasi. (3) Teknologi dan sumber daya manusia terbatas. (4) Harga jual listrik geotermal belum kompetitif dibandingkan batu bara. (5) Infrastruktur transmisi ke daerah terpencil belum memadai.<br><br>
+    <strong>Strategi:</strong> (1) Insentif fiskal dan penyederhanaan perizinan untuk investasi geotermal. (2) Kemitraan pemerintah-swasta dalam eksplorasi. (3) Riset dan pengembangan teknologi pengeboran yang lebih efisien. (4) Pemanfaatan langsung panas bumi untuk sektor pertanian dan pariwisata (green energy). (5) Regulasi yang mengizinkan pemanfaatan geotermal di kawasan hutan lindung dengan skema khusus.<br><br>
+    <strong>Dukungan terhadap SDGs:</strong> Pengembangan geotermal mendukung SDG 7 (Energi Bersih dan Terjangkau), SDG 13 (Penanganan Perubahan Iklim), dan SDG 8 (Pekerjaan Layak dan Pertumbuhan Ekonomi). Energi geotermal menghasilkan emisi karbon yang jauh lebih rendah dibandingkan batu bara, sehingga membantu Indonesia memenuhi komitmen Paris Agreement.<br><br>
+    <em>Sumber: Badan Geologi ESDM, Kementerian ESDM, International Geothermal Association</em>
+  </div>
+</div>
+
+<!-- Esai 5 -->
+<div class="card" data-type="essay">
+  <span class="q-num">5 <span class="hots-badge">HOTS+++</span></span>
+  <div class="q-text">Indonesia memiliki tiga zona waktu: WIB (GMT+7), WITA (GMT+8), dan WIT (GMT+9). Pembagian ini didasarkan pada letak bujur Indonesia yang membentang dari 95°BT hingga 141°BT. Namun, dalam era ekonomi digital dan perdagangan global, perbedaan zona waktu ini menimbulkan tantangan tersendiri. <br><br><strong>Analisislah</strong> dampak positif dan negatif pembagian tiga zona waktu bagi Indonesia, baik dari aspek ekonomi maupun sosial. <strong>Berikan argumenmu</strong> apakah Indonesia sebaiknya tetap mempertahankan tiga zona waktu atau menyatukan menjadi satu zona waktu (misalnya GMT+8)!</div>
+  <textarea class="essay-area" placeholder="Tulis jawabanmu di sini..."></textarea>
+  <button class="btn-reveal" onclick="toggleKey(this)">🔍 Lihat Kunci Jawaban</button>
+  <div class="answer-key">
+    <strong>Kunci Jawaban:</strong><br><br>
+    <strong>Dampak positif tiga zona waktu:</strong> (1) Sinkronisasi aktivitas masyarakat dengan waktu matahari lokal, sehingga ritme biologis dan aktivitas ekonomi lebih alami. (2) Efisiensi energi: wilayah timur tidak perlu menyalakan lampu di pagi hari yang masih gelap jika menggunakan satu zona waktu. (3) Koordinasi regional yang lebih baik: WITA menjadi "jembatan waktu" antara WIB dan WIT.<br><br>
+    <strong>Dampak negatif:</strong> (1) Komunikasi bisnis antarwilayah memerlukan penyesuaian waktu. (2) Jadwal transportasi dan logistik menjadi lebih kompleks. (3) Dalam transaksi keuangan dan pasar modal, perbedaan waktu dapat mempersempit jendela operasi bersama.<br><br>
+    <strong>Argumen:</strong> Secara geografis, tiga zona waktu adalah konsekuensi logis dari letak bujur Indonesia. Menyatukan menjadi satu zona waktu (GMT+8) akan menyebabkan wilayah barat mengalami siang terlalu dini (matahari terbit pukul 5 pagi) dan wilayah timur terlalu siang (matahari terbit pukul 8 pagi), yang berdampak pada produktivitas dan kesehatan. Dengan mempertimbangkan prinsip efisiensi dan keadilan geografis, Indonesia sebaiknya mempertahankan tiga zona waktu, tetapi meningkatkan koordinasi digital dan standarisasi jadwal nasional untuk mengurangi hambatan komunikasi.<br><br>
+    <em>Sumber: data.go.id, RRI, Analisis Geografi Regional</em>
+  </div>
+</div>
+
+<footer>
+  <p>📚 Bank Soal Geografi Kelas 11 — Kurikulum Merdeka</p>
+  <p>Referensi: Buku Erlangga, UNDP, Badan Geologi ESDM, UNY Repository, UU No. 32/2009, UU No. 41/1999, Brundtland Report 1987</p>
+</footer>
+
+</div>
+
+<!-- Score Bar -->
+<div class="score-bar" id="scoreBar">
+  PG: <span id="pgScore">0</span>/25 &nbsp;|&nbsp; B/S: <span id="tfScore">0</span>/10 &nbsp;|&nbsp; Total: <span id="totalScore">0</span>/35
+</div>
+
+<script>
+let pgCorrect = 0, pgDone = 0;
+let tfCorrect = 0, tfDone = 0;
+
+// ----- PILIHAN GANDA -----
+document.querySelectorAll('[data-type="pg"]').forEach(card => {
+  const answer = card.dataset.answer;
+  const fb = card.querySelector('.feedback');
+  card.querySelectorAll('.opt').forEach(opt => {
+    opt.addEventListener('click', () => {
+      if (card.dataset.locked) return;
+      card.dataset.locked = '1';
+      const chosen = opt.dataset.opt;
+      card.querySelectorAll('.opt').forEach(o => o.classList.add('locked'));
+      if (chosen === answer) {
+        opt.classList.add('correct');
+        fb.textContent = fb.dataset.ok;
+        fb.className = 'feedback show ok';
+        pgCorrect++;
+      } else {
+        opt.classList.add('wrong');
+        card.querySelector(`[data-opt="${answer}"]`).classList.add('correct');
+        fb.textContent = fb.dataset.no;
+        fb.className = 'feedback show no';
+      }
+      pgDone++;
+      updateScore();
+    });
+  });
+});
+
+// ----- BENAR / SALAH -----
+document.querySelectorAll('[data-type="tf"]').forEach(card => {
+  const answer = card.dataset.answer;
+  const fb = card.querySelector('.feedback');
+  card.querySelectorAll('.tf-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (card.dataset.locked) return;
+      card.dataset.locked = '1';
+      const chosen = btn.dataset.val;
+      card.querySelectorAll('.tf-btn').forEach(b => b.classList.add('locked'));
+      if (chosen === answer) {
+        btn.classList.add(answer === 'true' ? 'selected-true' : 'selected-false');
+        fb.textContent = fb.dataset.ok;
+        fb.className = 'feedback show ok';
+        tfCorrect++;
+      } else {
+        btn.classList.add(chosen === 'true' ? 'selected-true' : 'selected-false');
+        const correctBtn = card.querySelector(`[data-val="${answer}"]`);
+        correctBtn.classList.add(answer === 'true' ? 'selected-true' : 'selected-false');
+        fb.textContent = 'Kurang tepat. Jawaban yang benar adalah: ' + (answer === 'true' ? 'BENAR' : 'SALAH') + '.';
+        fb.className = 'feedback show no';
+      }
+      tfDone++;
+      updateScore();
+    });
+  });
+});
+
+// ----- ESAI REVEAL -----
+function toggleKey(btn) {
+  const key = btn.nextElementSibling;
+  key.classList.toggle('show');
+  btn.textContent = key.classList.contains('show') ? '🙈 Sembunyikan Kunci Jawaban' : '🔍 Lihat Kunci Jawaban';
+}
+
+// ----- SCORE -----
+function updateScore() {
+  document.getElementById('pgScore').textContent = pgCorrect;
+  document.getElementById('tfScore').textContent = tfCorrect;
+  document.getElementById('totalScore').textContent = pgCorrect + tfCorrect;
+}
+</script>
+
+</body>
+</html>
